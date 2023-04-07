@@ -8,6 +8,7 @@ import "../libs/Zipper.sol";
 contract Test {
     using Zipper for uint256[];
     uint256[] private compArray;
+    uint256[] private arrayNoComprimido = [0,1,2,3,4,5,6];
 
     function compress(uint256[] memory _in) public {
         compArray = _in.zip();
@@ -21,4 +22,8 @@ contract Test {
     function setPosition(uint256 _pos, uint256 _value) public {
         compArray.writePosition(_value, _pos);
     }
+    function testValidate()public view{
+        arrayNoComprimido.readPosition(0);
+    }
+
 }
