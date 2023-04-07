@@ -2,6 +2,7 @@
 // at address - 0xD8cA28F015a89AB556698Ec17CB404964dB10c30
 // Version Corregida - 0x274eCF451605F1c26DEC114F4BCBFD780c623bDa
 // Validación de entrada - 0x65d82fcF2492676a8B4D5EC1D9c39a0c50DF0eCB
+//Funcion validate() - 0x231596f722EEBd1DC7be99eE8474B8C5A47A45CE
 pragma solidity >=0.8.2 <0.9.0;
 import "../libs/Zipper.sol";
 

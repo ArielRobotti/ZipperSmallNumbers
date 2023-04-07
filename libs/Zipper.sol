@@ -3,7 +3,7 @@
 // at address - 0x3459e0368AaD228ff0A4198F4e78F9EC29ac914f
 // Version corregida - 0x5FDd55f8273c09833e7b32583113D6f4c455191b
 // Validacion de array - 0x68b7136F4b507dBDe03ddC1429ac58275ab5a257
-// Funcion Validate -  0x86Ab6cc99B876d3EeCF60C3F5223C313f1528e92
+// Funcion Validate() -  0x86Ab6cc99B876d3EeCF60C3F5223C313f1528e92
 pragma solidity >=0.8.2 <0.9.0;
 library Zipper{
 
