@@ -9,6 +9,7 @@ library Zipper{
 
     function zip(uint256[] memory _values) public pure returns(uint256[] memory){
         uint256 len = _values.length;
+        
         uint256[] memory result = new uint256[](len/32 + (len % 32 != 0 ? 1 : 0) + 1);
         uint256 firma = 97114105101108114111098111116116105064103109097105108046099111109;
 
@@ -36,7 +37,7 @@ library Zipper{
     }
     function validate(uint256[]memory _data )private pure{
         require(_data[0] >> 32 == 97114105101108114111098111116116105064103109097105108046099111109,
-                "Array incompatible");   
+                "Array incompatible");
     }
     function readPosition(uint256[] memory _data, uint256 _pos) public pure returns(uint256){
         validate(_data);

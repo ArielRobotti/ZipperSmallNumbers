@@ -1,31 +1,50 @@
 // SPDX-License-Identifier: GPL-3.0
-// at address - 0xD8cA28F015a89AB556698Ec17CB404964dB10c30
-// Version Corregida - 0x274eCF451605F1c26DEC114F4BCBFD780c623bDa
-// Validación de entrada - 0x65d82fcF2492676a8B4D5EC1D9c39a0c50DF0eCB
-//Funcion validate() - 0x6c3cAdDc67902E9b0806F9198fef6C3224494c3E
+
+//Deploy Adress - 0x706883a860D40DfD268138eDF008D9D3cd235b97 Mumbai
+//Deploy gas: 0.00224397 (library) + 0.00171945 (test)
+/*
+Input example:
+[0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,
+ 0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,
+ 0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,
+ 0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9]
+ */
+//0.00133546 MATIC setCompArray()
+//0.00884402 MATIC setNormalArray()
+//0.00012905 MATIC setPositionCompArray()
+//0.00007285 MATIC setPositionArray()
 
 pragma solidity >=0.8.2 <0.9.0;
 import "../libs/Zipper.sol";
 
 contract Test {
     using Zipper for uint256[];
-    uint256[] private compArray;
-    uint256[] private arrayNoComprimido = [0,1,2,3,4,5,6];
-
-    function compress(uint256[] memory _in) public {
-        compArray = _in.zip();
+    uint256[] public compArray;
+    uint256[] public arrayNormal;
+ 
+    function lenCompArray() public view returns(uint256){
+        return compArray.length;
     }
-    function len() public view returns(uint256, uint256){
-        return (compArray.lenUnzipped(), compArray.length);
+    function lenNormalArray() public view returns(uint256){
+        return arrayNormal.length;
     }
     function getPosition(uint256 _pos) public view returns (uint256) {
         return compArray.readPosition(_pos);
     }
-    function setPosition(uint256 _pos, uint256 _value) public {
+    function setPositionCompArray(uint256 _pos, uint256 _value) public {
         compArray.writePosition(_value, _pos);
     }
     function testValidate()public view{
-        arrayNoComprimido.readPosition(0);
+        arrayNormal.readPosition(0);
+    }
+    function saveNormalArray(uint256[] memory _data)public{
+        arrayNormal = _data;
+    }
+    function saveCompArray(uint256[] memory _data)public{
+        compArray = _data.zip();
     }
 
+    function setPositionNormalArray(uint256 _pos,uint256 _value)public {
+        arrayNormal[_pos] = _value;
+    }
 }
